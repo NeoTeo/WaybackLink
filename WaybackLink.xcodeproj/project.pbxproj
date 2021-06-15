@@ -11,6 +11,7 @@
 		ABE4B60B2678E61000697BF0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE4B60A2678E61000697BF0 /* ContentView.swift */; };
 		ABE4B60D2678E61200697BF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABE4B60C2678E61200697BF0 /* Assets.xcassets */; };
 		ABE4B6102678E61200697BF0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABE4B60F2678E61200697BF0 /* Preview Assets.xcassets */; };
+		ABE4B6172678ECE400697BF0 /* WaybackLinkFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE4B6162678ECE400697BF0 /* WaybackLinkFetcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		ABE4B60A2678E61000697BF0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		ABE4B60C2678E61200697BF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABE4B60F2678E61200697BF0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		ABE4B6162678ECE400697BF0 /* WaybackLinkFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybackLinkFetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 				ABE4B60A2678E61000697BF0 /* ContentView.swift */,
 				ABE4B60C2678E61200697BF0 /* Assets.xcassets */,
 				ABE4B60E2678E61200697BF0 /* Preview Content */,
+				ABE4B6162678ECE400697BF0 /* WaybackLinkFetcher.swift */,
 			);
 			path = WaybackLink;
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABE4B60B2678E61000697BF0 /* ContentView.swift in Sources */,
+				ABE4B6172678ECE400697BF0 /* WaybackLinkFetcher.swift in Sources */,
 				ABE4B6092678E61000697BF0 /* WaybackLinkApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -196,7 +200,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.4;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -251,7 +255,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.4;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -280,7 +284,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.terminalglow.WaybackLink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -309,7 +313,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.terminalglow.WaybackLink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
