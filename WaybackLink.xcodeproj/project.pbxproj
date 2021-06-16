@@ -21,6 +21,7 @@
 		ABE4B60C2678E61200697BF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABE4B60F2678E61200697BF0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		ABE4B6162678ECE400697BF0 /* WaybackLinkFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybackLinkFetcher.swift; sourceTree = "<group>"; };
+		ABF6124226795499007A484A /* WaybackLink.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WaybackLink.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +54,7 @@
 		ABE4B6072678E61000697BF0 /* WaybackLink */ = {
 			isa = PBXGroup;
 			children = (
+				ABF6124226795499007A484A /* WaybackLink.entitlements */,
 				ABE4B6082678E61000697BF0 /* WaybackLinkApp.swift */,
 				ABE4B60A2678E61000697BF0 /* ContentView.swift */,
 				ABE4B60C2678E61200697BF0 /* Assets.xcassets */,
@@ -269,6 +271,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WaybackLink/WaybackLink.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -298,6 +301,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WaybackLink/WaybackLink.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;

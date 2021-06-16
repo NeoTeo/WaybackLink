@@ -10,7 +10,6 @@ import SwiftUI
 @main
 struct WaybackLinkApp: App {
     
-    
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var body: some Scene {
@@ -20,18 +19,20 @@ struct WaybackLinkApp: App {
         }
     }
     
+    @MainActor
     class AppDelegate: NSObject, NSApplicationDelegate {
 //        var popover = NSPopover.init()
         var pasteBoardCheckTimer: Timer?
         let wbLinkFetcher = WaybackLinkFetcher()
         
         var statusBarItem: NSStatusItem?
-        var test: Bool = false
-        var statusSymbol: NSImage? = NSImage(systemSymbolName: "circle", accessibilityDescription: "icon for WaybackLink app")
+        
+        private let pasteboard = NSPasteboard.general
+        private var urlStrings = [String]()
         
         func applicationDidFinishLaunching(_ notification: Notification) {
             
-            let contentView = ContentView()
+//            let contentView = ContentView()
 
             // Set the SwiftUI's ContentView to the Popover's ContentViewController
 //            popover.behavior = .transient
@@ -41,7 +42,7 @@ struct WaybackLinkApp: App {
 //            popover.contentViewController?.view.window?.makeKey()
             
             statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-            statusBarItem?.button?.image = statusSymbol
+            statusBarItem?.button?.image = NSImage(systemSymbolName: "circle", accessibilityDescription: "icon for WaybackLink app")
 //            statusBarItem?.button?.title = "WaybackLink"
             statusBarItem?.button?.action = #selector(AppDelegate.togglePopover(_:))
             
@@ -62,25 +63,45 @@ struct WaybackLinkApp: App {
 //            popover.performClose(sender)
 //        }
         func updateStatus() {
-//            if NSPasteboard
-            print("pasteboard status checked.")
+            
+            guard let bestType = pasteboard.availableType(from: [ .URL, .string]) else {
+                print("no requested type found")
+                return
+            }
+                        
+            for element in pasteboard.pasteboardItems! {
+                
+                guard let str = element.string(forType: bestType),
+                        str.starts(with: "http"),
+                      str.contains("archive.org") == false else { continue }
+                
+                /// might be more efficient to use the new Swift Collections library's ordered set
+                guard urlStrings.contains(str) == false else { continue }
+                
+                urlStrings.append(str)
+                
+            }
+            let name = urlStrings.count == 0 ? "circle" : "link.circle"
+            statusBarItem?.button?.image = NSImage(systemSymbolName: name, accessibilityDescription: "icon for WaybackLink app")
         }
         
         @objc func togglePopover(_ sender: AnyObject?) {
-            print("toggle! \(test)")
-            let name = (test == true) ? "link.circle.fill" : "link.circle"
-            statusBarItem?.button?.image = NSImage(systemSymbolName: name, accessibilityDescription: "icon for WaybackLink app")
-            async {
-                guard let wbLink = try? await wbLinkFetcher.linkFor(urlString: "some url") else { return }
-                print("Got back a link: \(wbLink)")
+            
+            /// Clear pasteboard in preparation for replacing contents with Wayback link equivalents
+            pasteboard.clearContents()
+            
+            // This might be a case for using a group task.
+            for urlString in urlStrings {
+                async {
+                    if let wbLink = try? await wbLinkFetcher.linkFor(urlString: urlString) {
+                        pasteboard.setString(wbLink, forType: .string)
+                    }
+                }
             }
-            test.toggle()
+            statusBarItem?.button?.image = NSImage(systemSymbolName: "link.circle.fill", accessibilityDescription: "icon for WaybackLink app")
+            /// clear the urlStrings now that we're done
+            urlStrings.removeAll()
+
         }
-//            if popover.isShown {
-//                closePopover(sender)
-//            } else {
-//                showPopover(sender)
-//            }
-//        }
     }
 }
